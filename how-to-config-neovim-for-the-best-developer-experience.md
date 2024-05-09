@@ -1,0 +1,31 @@
+---
+title: How to config Neovim for the best developer experience
+date: 2024-05-09
+tags: IDE, config, CLI
+---
+
+## What is Neovim?
+
+Neovim is an extension of Vim that has the potential to offer many of the same conveniences you’d expect from most modern IDEs—all while retaining the classic Vim functionality that so many developers are used to. What’s more, the latest versions of Neovim include an embedded scripting language, Lua, which offers much more control and extensibility to the user.
+
+With the powerhouse combo of Neovim and Lua, you can customize your own, personal IDE that’s configured to your exact specifications.
+
+This article walks you through how to set up Neovim and write your config files entirely in Lua. It also introduces you to Neovim’s extensive plugin environment.
+
+Getting Started with Neovim
+To get started, you’ll need to install the Neovim package.
+
+## Install Neovim
+
+There are several different ways to install Neovim on your system, depending on which OS you run. Windows, macOS, and Linux all have pre-built packages that you can download and run directly. Other options include installing Neovim via your package manager or even building it directly from the source. This tutorial will use the pre-built package for the latest release.
+
+Go to the Releases page on GitHub and grab the latest release of Neovim for your operating system (v0.6.0 at the time of this writing). Download the archive file and save it to your machine. On Linux, you can save the Neovim AppImage to the folder of your choice with the following command:
+
+`bash $ cd ~ && wget `
+https://github.com/neovim/neovim/releases/download/v0.6.0/nvim.appimage
+Once you’ve downloaded the file, you’ll need to extract the contents using your file manager or by running a shell command like tar xzvf name-of-file.tar.gz. If you’re using the AppImage and have FUSE installed on your system, you won’t need to extract the file. But you will need to modify the file permissions:
+
+`bash $ chmod u+x nvim.appimage `
+Now that you have Neovim installed, you can run it by either clicking the executable file or prepending a dot slash to the location of the binary:
+
+`bash $ ./nvim.appimage `
