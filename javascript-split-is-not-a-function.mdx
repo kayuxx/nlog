@@ -1,0 +1,82 @@
+---
+title: How to fix TypeError: split is not a function in JavaScript
+date: 2023-07-20
+tags: ["javaScript", "react"]
+description: One error you might encounter when running JavaScript `TypeError: split is not a function`, This error occurs when you call the split() method from a value that’s not of string type. Let me show you an example that causes the TypeError: split is not a function error and an easy way to fix it.
+---
+
+One error you might encounter when running JavaScript code is:
+
+```ts
+TypeError: split is not a function
+```
+
+This error occurs when you call the `split()` method from a value that’s not of string type.
+
+Let me show you an example that causes the `TypeError: split is not a function` error and an easy way to fix it.
+
+How to reproduce this error
+Suppose you want to split a string into an array. You called the split() method from a variable as follows:
+```ts 
+const today = new Date();
+```
+
+```ts
+const dateArray = today.split(" ");
+```
+
+When you run the code above, you get this error:
+
+```ts
+TypeError: today.split is not a function
+```
+
+This is because the `split()` method is called from a Date object, which is created using the new Date() construct.
+
+The `split()` method is not available in a Date object, so JavaScript responded with split is not a function error.
+
+How to fix this error
+To resolve this error, you need to convert the non-string object into a string first using the toString() method.
+
+Here’s an example fix:
+
+```ts
+const today = new Date();
+```
+```ts
+const dateArray = today.toString().split(" ");
+console.log(dateArray); // [ Thu', Jul', '20', ...]
+```
+
+The same solution works with other JavaScript objects. In another example, suppose you want to create an array from the Document location object:
+```ts
+const loc = document.location;
+```
+```ts
+const locArr = loc.toString().split("/");
+console.log(locArr); // ['https:', '', 'sebhastian.com', ...]
+```
+
+The `toString()` method allows you to convert an object into a string representing the object’s value.
+
+Alternatively, you can also call the `split()` method only from a string by using the typeof operator:
+```tsx
+const today = new Date();
+
+if (typeof today === "string") {
+  const dateArray = today.toString().split(" ");
+  console.log(dateArray); // [ Thu', Jul', '20', ...]
+} else {
+  console.log("Not a string object");
+}
+```
+
+Or you can also check the type using the ternary operator as follows:
+```ts
+const today = new Date();
+const result = typeof today === 'string' ? today.split('/') : "";
+console.log(result);
+```
+Here, `the split()` method is only called when the typeof the variable is a string. Otherwise, an empty string is returned. You can use the solution that gives the desired result.
+
+I hope this tutorial helps. Happy coding! 🙌
